@@ -1,0 +1,8 @@
+# Convert a number to decimal and print it
+
+def myfunc(n):
+    a = n
+    print(a)
+
+def main():
+    myfunc(1)

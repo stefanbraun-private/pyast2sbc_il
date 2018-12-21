@@ -1,0 +1,91 @@
+Installation Python3 Entwicklungsumgebung.txt
+
+div. Notizen und kurze Wegleitung für steinigen Weg der Entwicklung in Python...
+
+Stefan Braun / sbraun@datacomm.ch
+
+[Warnung: Text ist "work in progress"]
+==>to do: sobald Weg gefunden ist, diesen sauber dokumentieren!!!
+
+-damit Entwicklersystem als Ganzes gesichert werden kann:
+=>Windows-Installation in VMware Workstation Player
+=>für performante Entwicklungsumgebung: virtuelle Maschine auf SSD-Partition speichern
+  (Risiko: grösserer "Flash-Wear-Out" der SSD...
+   =>Vermeidung vorzeitiger Verschleiss: im Gast-OS Defragmentierungs-Zeitplan deaktivieren,
+     zudem die SSD nicht vollständig füllen)
+
+
+Anpassung per 10.10.2018: Entwicklersystem: Win7 x86 (32Bit!!!)
+Dies ist der kleinste gemeinsame Nenner der Ziel-Plattformen,
+und gemäss diversen Quellen müssen somit portable EXE-Dateien direkt auf der Zielplattform erstellt werden!
+(PyInstaller: Python-Code wird mitsamt Python-Interpreter und allen notwendigen Python-Modulen zusammengepackt)
+
+=>darum Python 3 x32 (Anaconda3) als Root-Anaconda-Environment
+
+
+1) Installation Anaconda:
+https://www.anaconda.com/download/
+
+=>Installation "all users"
+=>Zu Beachten: Pfad ohne Leerzeichen: https://docs.anaconda.com/anaconda/faq#in-what-folder-should-i-install-anaconda-on-windows
+==>gewählt: C:\Anaconda3
+=>Installation ohne "Microsoft VSCode".
+
+
+2) ev: GitHub Desktop installieren
+https://desktop.github.com/
+https://central.github.com/deployments/desktop/desktop/latest/win32
+
+
+3) Git for Windows installieren
+(gemäss https://github.com/desktop/desktop/issues/3801
+können so externe Programme wie z.B. PyCharm Git-Funktionalität nutzen)
+https://gitforwindows.org/
+
+=>bei Installation: Notepad++ als Git-Standard-Editor konfigurieren.
+
+
+4) PyCharm installieren
+PyCharm Community Version wählen
+=>Achtung: Version "pycharm-community-2018.2.4" funktioniert gut,
+           neuere Versionen zeigen viele Fehlalarme bei Imports an...
+https://www.jetbrains.com/pycharm/download/#section=windows
+
+=>Desktop-Link "64-bit launcher"
+=>.py File Association erstellen
+=>"Download and install JRE x86 by JetBrains" (irgendwo stand diese Empfehlung...)
+
+
+5) erstmaliger Download des Projektes:
+-bei Start von PyCharm "Check out from Version Control"
+=>Git wählen, https://github.com/stefanbraun-private/pyast2sbc_il.git
+
+
+6) neues Projekt "pyast2sbc_il"
+
+Folgende Vorgehensweise ist vielleicht nicht ganz der saubere Weg:
+-via Startmenü "Anaconda-Navigator" starten
+-neues Conda-Environment "pyast2sbc_il" mit neuester Python-Interpreter-Version erstellen
+-in Pycharm "Settings"->"Project: pyast2sbc_il"->"Project Interpreter"
+ unter "Show All" bei Conda-Environment (existierend)
+ den Pfad zum Python Interpreter wählen:
+ C:\Anaconda3\envs\pyast2sbc_il\python.exe
+
+=>vermutlich besser wäre es, direkt in Pycharm ein neues Conda-Environment zu erstellen:
+https://www.jetbrains.com/help/pycharm/conda-support-creating-conda-virtual-environment.html
+
+
+
+=>es ist nicht vorgesehen, dass "pyast2sbc_il" Funktionalität zur Verfügung stellt,
+  darum nur Windows-Binaries und Sourcecode auf GitHub (kein PyPI-Paket)
+
+
+
+Zum Start der Programmierung alle Python-Packages im aktuellen Environment auf den aktuellen Stand bringen:
+-"Pycharm" beenden
+-"Anaconda Prompt" starten
+-conda Environment aktivieren: "activate pyast2sbc_il"
+-conda selber aktualisieren: "conda update -n base conda"
+-das Anaconda-Metapaket aktualisieren: "conda install -c anaconda python"
+
+
